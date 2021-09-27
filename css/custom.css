@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #dcedc8;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.p-15 {
+    padding: 15px;
+}
+
+.float-right {
+    float: right;
+}
+
+.sessions-container {
+    height: 170px;
+    width: 300px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.vertical-align-top {
+    vertical-align: top;
+}
+
+.center {
+    min-height: 325px;
+    max-height: 350px;
+    max-width: 350px;
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-color: #a5d6a7;
+    border-radius: 10%;
+    padding: 15px;
+}
+
+.login-area {
+    height: 325px;
+}
+
+h1 {
+    text-align: center;
+    color: #003300;
+}
+
+label {
+    color: #003300;
+}
+
+a {
+    color: #003300;
+}
+
+*:focus {
+    outline: none;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: none;
+    border: none;
+}
+
+textarea {
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: none;
+    border: none;
+}
+
+.full-width {
+    width: 100%;
+    box-sizing:border-box;
+}
+
+.options button {
+    width: 100%;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #003300;
+    border: 1px solid #003300;
+    padding: 5px;
+}
+
+.btn-success:disabled {
+    color: #fff;
+    background-color: #a5d6a7;
+    border: 1px solid #a5d6a7;
+    padding: 5px;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 0 15px;
+    background-color: #a5d6a7;
+}
+
+.header a {
+    text-decoration: none;
+    padding: 25px 10px;
+}
+
+.header a:hover {
+    color: #003300;
+    background-color: #9acc9c;
+}
+
+.header__logo {
+    font-weight: 700;
+    padding: 0 25px;
+    float: left;
+}
+
+.menu {
+    float: right;
+    padding: 25px 0;
+}
+
+table a {
+    font-weight: bold;
+}
+
+.content {
+    padding-top: 70px;
+}
+
+section.content table {
+    margin-top: 25px !important;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+td h1 {
+    margin: 0;
+}
+
+th {
+    background-color: #a5d6a7;
+}
+
+tr {
+    border-bottom: 1px solid #a5d6a7;
+}
+
+i.fas {
+    color: #003300;
+}
+
+.forum-icon {
+    font-size: 35px;
+}
+
+video {
+    margin: 0 auto;
+    display: block;
+
+    width:100%;
+    max-width:800px;
+}
+
+#new-comment {
+    display: none;
+    margin-top: 20px;
+}
+
+#new-comment form {
+    margin-bottom: 15px;
+}
+
+.user-info {
+    width: 150px;
+}
+
+.user-info a {
+    text-decoration: none;
+}
+
+.user-info a > i {
+    font-size: 17px;
+}
+
+.no-border {
+    border: none !important;
+}
+
+#edit-thread a {
+    text-decoration: none;
+}
