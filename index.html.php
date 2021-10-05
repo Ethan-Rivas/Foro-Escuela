@@ -17,20 +17,14 @@
 </head>
 
 <body class="container">
-    <header class="header">
-        <a href="./index.html" class="header__logo">UNISUR</a>
-
-        <nav class="menu">
-            <a href="#">Inicio</a>
-            <a href="pages/sessions/login.html">Iniciar Sesión</a>
-            <a href="pages/sessions/register.html">Registrarse</a>
-        </nav>
-    </header>
+    <?php
+      require('components/navmenu.html.php');
+    ?>
 
     <section class="content p-15">
         <table class="mt-20">
             <?php
-                require('./database/categories/index.php');
+                require('database/categories/index.php');
             ?>
         </table>
     </section>

@@ -43,12 +43,22 @@
                     <input id="password_confirmation" name="password_confirmation" type="password" class="full-width">
                 </div>
 
+                <div class="mt-10">
+			            <?php
+				            if($errors) {
+					            foreach($errors as $error) {
+						            echo $error;
+					            }
+				            }
+			            ?>
+                </div>
+
                 <div class="options mt-10">
                     <div class="submit">
                         <button class="btn btn-block btn-success" name="submit" type="submit">Registrarse</button>
                     </div>
                     <div class="register mt-10">
-                        <a href="./login.html">Ya tengo una cuenta</a>
+                        <a href="./login.html.php">Ya tengo una cuenta</a>
                     </div>
                 </div>
             </form>

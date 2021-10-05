@@ -17,39 +17,35 @@
 </head>
 
 <body class="container">
-<header class="header">
-    <a href="../../index.html" class="header__logo">UNISUR</a>
-
-    <nav class="menu">
-        <a href="#">Inicio</a>
-        <a href="../../pages/sessions/login.html">Iniciar Sesión</a>
-        <a href="../../pages/sessions/register.html">Registrarse</a>
-    </nav>
-</header>
-
-<section class="content p-15">
-    <div id="create-thread" class="mt-20 text-right">
-        <a href="../../pages/threads/new.html">
-            <button class="btn btn-success">Nuevo Hilo</button>
-        </a>
-    </div>
-
-    <table style="margin-top: 15px !important;">
-        <tr>
-            <th colspan="2">Hilos</th>
-            <th class="text-center"><i class="fas fa-book"></i></th>
-            <th class="text-center"><i class="fas fa-comment-dots"></i></th>
-            <th class=""><i class="fas fa-clock"></i></th>
-        </tr>
-
-        <?php
-            require('../../database/threads/index.php');
-        ?>
-    </table>
-</section>
-
-<script src="../../js/vendor/modernizr-3.11.2.min.js"></script>
-<script src="../../js/plugins.js"></script>
+    <?php
+      require('../../components/navmenu.html.php');
+    ?>
+    
+    <section class="content p-15">
+        <div id="create-thread" class="mt-20 text-right">
+          <?php
+            echo '<a href="../../pages/threads/new.html.php?category_id='.$_GET["category_id"].'">
+                    <button class="btn btn-success">Nuevo Hilo</button>
+                 </a>';
+          ?>
+        </div>
+    
+        <table style="margin-top: 15px !important;">
+            <tr>
+                <th colspan="2">Hilos</th>
+                <th class="text-center"><i class="fas fa-book"></i></th>
+                <th class="text-center"><i class="fas fa-comment-dots"></i></th>
+                <th class=""><i class="fas fa-clock"></i></th>
+            </tr>
+    
+            <?php
+                require('../../database/threads/index.php');
+            ?>
+        </table>
+    </section>
+    
+    <script src="../../js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="../../js/plugins.js"></script>
 </body>
 
 </html>

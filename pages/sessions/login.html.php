@@ -1,3 +1,7 @@
+<?php
+	include('../../database/sessions/login.php');
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -24,7 +28,7 @@
             </div>
 
             <h1>Iniciar Sesión</h1>
-            <form action="../../index.html" method="POST">
+            <form action="login.html.php" method="POST">
                 <div>
                     <label for="email">Correo Electrónico</label>
                     <input id="email" name="email" type="text" class="full-width">
@@ -37,15 +41,25 @@
 
                 <div class="mt-10">
                     <input id="remember" name="remember" type="checkbox">
-                    <label for="remember">Recuerdame</label>
+                    <label for="remember">Recuérdame</label>
+                </div>
+              
+                <div class="mt-10">
+                    <?php
+                        if($errors) {
+                            foreach($errors as $error) {
+                              echo $error;
+                            }
+                        }
+                    ?>
                 </div>
 
                 <div class="options mt-10">
                     <div class="submit">
-                        <button class="btn btn-block btn-success" type="submit">Iniciar Sesión</button>
+                        <button class="btn btn-block btn-success" name="submit" type="submit">Iniciar Sesión</button>
                     </div>
                     <div class="register mt-10">
-                        <a href="./register.html">No tengo usuario registrado?</a>
+                        <a href="./register.html.php">No tengo usuario registrado?</a>
                     </div>
                 </div>
             </form>

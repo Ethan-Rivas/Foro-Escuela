@@ -34,7 +34,7 @@
                     <i class="fas fa-comments forum-icon"></i>
                 </td>
                 <td>
-                    <a href="pages/subcategories/index.html">'.$category["title"].'</a>
+                    <a href="pages/subcategories/index.html.php?category_id='.$category["id"].'">'.$category["title"].'</a>
                     <p>'.$category["description"].'</p>
                 </td>
                 <td class="text-center">
@@ -44,8 +44,8 @@
                     350
                 </td>
                 <td>
-                    <a href="pages/threads/show.html">Última actividad publicada</a> <br>
-                    <span>Por: <a href="pages/profile/profile.html">Ethan Rivas</a></span>
+                    <a href="pages/threads/show.html.php">Última actividad publicada</a> <br>
+                    <span>Por: <a href="pages/profile/profile.html.php">Ethan Rivas</a></span>
                     <p>Hoy 27/09/2021 - 11:33 AM</p>
                 </td>
             </tr>';

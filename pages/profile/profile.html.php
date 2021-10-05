@@ -19,12 +19,12 @@
 
 <body class="container">
 <header class="header">
-    <a href="../../index.html" class="header__logo">UNISUR</a>
+    <a href="../../index.html.php" class="header__logo">UNISUR</a>
 
     <nav class="menu">
         <a href="#">Inicio</a>
-        <a href="../../pages/sessions/login.html">Iniciar Sesión</a>
-        <a href="../../pages/sessions/register.html">Registrarse</a>
+        <a href="../../pages/sessions/login.html.php">Iniciar Sesión</a>
+        <a href="../../pages/sessions/register.html.php">Registrarse</a>
     </nav>
 </header>
 
@@ -63,10 +63,10 @@
                         </div>
 
                         <div class="mt-10">
-                            <a href="../../pages/profile/edit.html">
+                            <a href="../../pages/profile/edit.html.php">
                                 <button class="btn btn-success">Editar</button>
                             </a>
-                            <a href="../../index.html" onclick="return confirm('Seguro que desea eliminar su cuenta?');">
+                            <a href="../../index.html.php" onclick="return confirm('Seguro que desea eliminar su cuenta?');">
                                 <button class="btn btn-success">Eliminar</button>
                             </a>
                         </div>
@@ -86,7 +86,7 @@
                                     <i class="fas fa-comments forum-icon"></i>
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Hilo de Ejemplo</a>
+                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
                                     <p>Esta es la primera hilo de ejemplo para el foro</p>
                                 </td>
                                 <td class="text-center">
@@ -96,8 +96,8 @@
                                     350
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html">Ethan Rivas</a></span>
+                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
+                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
                                     <p>Hoy 27/09/2021 - 11:33 AM</p>
                                 </td>
                             </tr>
@@ -106,7 +106,7 @@
                                     <i class="fas fa-comments forum-icon"></i>
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Hilo de Ejemplo</a>
+                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
                                     <p>Esta es la primera hilo de ejemplo para el foro</p>
                                 </td>
                                 <td class="text-center">
@@ -116,8 +116,8 @@
                                     350
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html">Ethan Rivas</a></span>
+                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
+                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
                                     <p>Hoy 27/09/2021 - 11:33 AM</p>
                                 </td>
                             </tr>
@@ -137,7 +137,7 @@
                                     <i class="fas fa-comments forum-icon"></i>
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Hilo de Ejemplo</a>
+                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
                                     <p>Esta es la primera hilo de ejemplo para el foro</p>
                                 </td>
                                 <td class="text-center">
@@ -147,8 +147,8 @@
                                     350
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html">Ethan Rivas</a></span>
+                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
+                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
                                     <p>Hoy 27/09/2021 - 11:33 AM</p>
                                 </td>
                             </tr>
@@ -157,7 +157,7 @@
                                     <i class="fas fa-comments forum-icon"></i>
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Hilo de Ejemplo</a>
+                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
                                     <p>Esta es la primera hilo de ejemplo para el foro</p>
                                 </td>
                                 <td class="text-center">
@@ -167,8 +167,8 @@
                                     350
                                 </td>
                                 <td>
-                                    <a href="../threads/show.html">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html">Ethan Rivas</a></span>
+                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
+                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
                                     <p>Hoy 27/09/2021 - 11:33 AM</p>
                                 </td>
                             </tr>

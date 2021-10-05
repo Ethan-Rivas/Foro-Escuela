@@ -6,49 +6,47 @@
 	$password = "1234";
 	$database = "foro_unisur";
 	
-	// Create connection
+	// Crear conexión a base de datos
 	$conn = new mysqli($servername, $nickname, $password, $database);
 	
-	// Check connection
+	// Verificar la conexión
 	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
+		die("Conexión fallida: " . $conn->connect_error);
 	}
 	
 	$errors = array();
 
-	// Register
+	// Área de Registro
 	if (isset($_POST['submit'])) {
 		$email = mysqli_real_escape_string($conn, $_POST['email']);
 		$password = mysqli_real_escape_string($conn, $_POST['password']);
 		$password_confirmation = mysqli_real_escape_string($conn, $_POST['password_confirmation']);
 		
-		if (empty($email)) { array_push($errors, "Email is required"); }
-		if (empty($password)) { array_push($errors, "Password is required"); }
+		if (empty($email)) { array_push($errors, "El email no puede estar vacío"); }
+		if (empty($password)) { array_push($errors, "Se necesita una contraseña"); }
 		if ($password != $password_confirmation) {
-			array_push($errors, "The two passwords do not match");
+			array_push($errors, "La contraseña y la confirmación no coinciden");
 		}
 		
-		// first check the database to make sure
-		// a user does not already exist with the same nickname and/or email
+		// Verificar si no hay un usuario con ese correo existente
 		$user_check_query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
 		$result = $conn->query($user_check_query);
 		$user = $result->fetch_assoc();
 		
-		if ($user) { // if user exists
+		if ($user) { // Si esl usuario ya existe
 			if ($user['email'] === $email) {
-				array_push($errors, "Email already exists");
+				array_push($errors, "Ya existe una cuenta registrada con email");
 			}
 		}
 		
-		// Finally, register user if there are no errors in the form
+		// Registrar usuario si no se presentaron errores
 		if (count($errors) == 0) {
-			$password = md5($password);//encrypt the password before saving in the database
-			
+			$password = md5($password); // Encriptación de contraseña
 			$query = "INSERT INTO users (email, password) VALUES('$email', '$password')";
-			$conn->query($query);
+			$an = $conn->query($query);
 			
-			$_SESSION['nickname'] = $email;
-			$_SESSION['success'] = "You are now logged in";
+			$_SESSION['email'] = $email;
+			$conn->close();
 			
 			header('location: ../../index.html.php');
 		}

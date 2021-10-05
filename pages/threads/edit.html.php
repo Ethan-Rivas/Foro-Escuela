@@ -1,3 +1,7 @@
+<?php
+  require('../../database/threads/edit.php');
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -19,12 +23,12 @@
 
 <body class="container">
 <header class="header">
-    <a href="../../index.html" class="header__logo">UNISUR</a>
+    <a href="../../index.html.php" class="header__logo">UNISUR</a>
 
     <nav class="menu">
         <a href="#">Inicio</a>
-        <a href="../../pages/sessions/login.html">Iniciar Sesión</a>
-        <a href="../../pages/sessions/register.html">Registrarse</a>
+        <a href="../../pages/sessions/login.html.php">Iniciar Sesión</a>
+        <a href="../../pages/sessions/register.html.php">Registrarse</a>
     </nav>
 </header>
 
@@ -52,22 +56,32 @@
                 </div>
             </td>
             <td class="vertical-align-top">
-                <form action="../../pages/threads/show.html" method="POST">
+                <?php
+                echo '<form action="edit.html.php?post_id='.$post->id.'" method="POST">'; ?>
+                    <input type="hidden" name="_method" value="PUT" />
+                
                     <div>
                         <label for="title">Título</label>
-                        <input id="title" type="text" class="full-width">
+                      
+                        <?php
+                            echo  '<input id="title" name="title" type="text" class="full-width" value="'.htmlspecialchars($post->title).'">';
+                        ?>
                     </div>
 
                     <div class="mt-10">
                         <label for="content">Contenido</label>
-                        <textarea name="content" id="content" cols="30" rows="10" class="full-width"></textarea>
+                          <?php
+                            echo '<textarea name="content" id="content" cols="30" rows="10" class="full-width">'.htmlspecialchars($post->content).'</textarea>';
+                          ?>
                     </div>
 
                     <div class="mt-10">
-                        <button id="publish-comment" type="submit" class="btn btn-success">Publicar</button>
-                        <a href="../../pages/subcategories/index.html">
-                            <button id="cancel-comment" type="button" class="btn btn-success">Cancelar</button>
-                        </a>
+                        <button id="edit-comment" type="submit" name="submit" class="btn btn-success">Editar</button>
+                        <?php
+                            echo '<a href="../../pages/threads/show.html.php?post_id='.$post->id.'">
+                                    <button id="cancel-comment" type="button" class="btn btn-success">Cancelar</button>
+                                  </a>';
+                        ?>
                     </div>
                 </form>
             </td>
