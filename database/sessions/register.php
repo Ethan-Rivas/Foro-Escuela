@@ -1,5 +1,5 @@
 <?php
-    require('../connection_info.php');
+    require('./database/connection_info.php');
 
 	session_start();
 

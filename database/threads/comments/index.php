@@ -1,6 +1,6 @@
 <?php
 
-    require('../../connection_info.php');
+    require('./database/connection_info.php');
 
     // Create connection
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
