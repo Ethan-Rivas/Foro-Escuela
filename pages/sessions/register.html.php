@@ -1,3 +1,7 @@
+<?php
+  include('../../database/sessions/register.php');
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -23,7 +27,7 @@
                 <i class="fas fa-user"></i>
             </div>
             <h1>Registrarse</h1>
-            <form action="../../index.html" method="POST">
+            <form action="register.html.php" method="POST">
                 <div>
                     <label for="email">Correo Electrónico</label>
                     <input id="email" name="email" type="text" class="full-width">
@@ -36,12 +40,12 @@
 
                 <div class="mt-10">
                     <label for="password_confirmation">Confirmar Contraseña</label>
-                    <input id="password_confirmation" name="password" type="password" class="full-width">
+                    <input id="password_confirmation" name="password_confirmation" type="password" class="full-width">
                 </div>
 
                 <div class="options mt-10">
                     <div class="submit">
-                        <button class="btn btn-block btn-success" type="submit">Registrarse</button>
+                        <button class="btn btn-block btn-success" name="submit" type="submit">Registrarse</button>
                     </div>
                     <div class="register mt-10">
                         <a href="./login.html">Ya tengo una cuenta</a>
