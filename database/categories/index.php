@@ -1,11 +1,8 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "1234";
-	$database = "foro_unisur";
+    require('../connection_info.php');
 	
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $database);
+	$conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 	
 	// Check connection
 	if ($conn->connect_error) {
