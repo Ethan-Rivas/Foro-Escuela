@@ -3,11 +3,8 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
-    $base_path = substr(__DIR__, 0, strpos(__DIR__, 'database')) . '/database';
-    require("{$base_path}/connection_info.php");
-
-    // Create connection
-    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+  // Create connection
+  $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 	
 	// Verificar la conexión
 	if ($conn->connect_error) {

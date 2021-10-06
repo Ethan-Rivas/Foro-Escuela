@@ -3,11 +3,11 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
-    $base_path = substr(__DIR__, 0, strpos(__DIR__, 'database')) . '/database';
-    require("{$base_path}/connection_info.php");
+  $base_path = substr(__DIR__, 0, strpos(__DIR__, 'database')) . '/database';
+  require("{$base_path}/connection_info.php");
 
-    // Create connection
-    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+  // Create connection
+  $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
 	
 	// Verificar la conexión
 	if ($conn->connect_error) {
@@ -21,8 +21,10 @@
 		$query = "SELECT * FROM posts WHERE id='".$_GET['post_id']."'";
 		$results = mysqli_query($conn, $query);
 		$post = (object) $results->fetch_assoc();
-	} else {
-		header("location: ../../404.html");
+		
+		if (!$post->id) {
+			header("location: /404.html");
+		}
 	}
 	
 	// Área de Edición
@@ -43,6 +45,4 @@
 		$conn->close();
 		
 		header("location: ../../pages/threads/show.html.php?post_id=$post_id");
-	} else {
-		header("location: /404.html");
 	}

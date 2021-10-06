@@ -20,7 +20,7 @@
 		if ($threads->num_rows > 0) {
 			// output data of each row
 			while($thread = $threads->fetch_assoc()) {
-				$content = strlolen($thread['content']) >= 100 ? htmlspecialchars(substr($thread['content'], 0, 150)).'...'.'<a href="../threads/show.html.php?post_id='.$thread["id"].'">Ver más</a>' : $thread['content'];
+				$content = strlen($thread['content']) >= 100 ? htmlspecialchars(substr($thread['content'], 0, 150)).'...'.'<a href="../threads/show.html.php?post_id='.$thread["id"].'">Ver más</a>' : $thread['content'];
 				
 				echo '<tr>
             <td class="text-center">
