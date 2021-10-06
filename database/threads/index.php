@@ -1,5 +1,6 @@
 <?php
-    require('./database/connection_info.php');
+    $base_path = substr(__DIR__, 0, strpos(__DIR__, 'database')) . '/database';
+    require("{$base_path}/connection_info.php");
 
     // Create connection
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
@@ -19,7 +20,7 @@
 		if ($threads->num_rows > 0) {
 			// output data of each row
 			while($thread = $threads->fetch_assoc()) {
-				$content = strlen($thread['content']) >= 100 ? htmlspecialchars(substr($thread['content'], 0, 150)).'...'.'<a href="../threads/show.html.php?post_id='.$thread["id"].'">Ver más</a>' : $thread['content'];
+				$content = strlolen($thread['content']) >= 100 ? htmlspecialchars(substr($thread['content'], 0, 150)).'...'.'<a href="../threads/show.html.php?post_id='.$thread["id"].'">Ver más</a>' : $thread['content'];
 				
 				echo '<tr>
             <td class="text-center">

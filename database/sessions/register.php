@@ -1,5 +1,6 @@
 <?php
-    require('./database/connection_info.php');
+    $base_path = substr(__DIR__, 0, strpos(__DIR__, 'database')) . '/database';
+    require("{$base_path}/connection_info.php");
 
 	session_start();
 
