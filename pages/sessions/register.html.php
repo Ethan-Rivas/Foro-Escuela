@@ -11,26 +11,26 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
     <script src="https://kit.fontawesome.com/48b6b080d5.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/custom.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/custom.css">
 </head>
 
 <body class="sessions-container">
     <section class="content register-area">
         <div class="center">
             <div class="session-icon text-center">
-                <i class="fas fa-user"></i>
+                <a href="/"><i class="fas fa-user"></i></a>
             </div>
             <h1>Registrarse</h1>
             <form action="register.html.php" method="POST">
                 <div>
                     <label for="email">Correo Electrónico</label>
-                    <input id="email" name="email" type="text" class="full-width">
+                    <input id="email" name="email" type="email" class="full-width">
                 </div>
 
                 <div class="mt-10">
@@ -44,13 +44,15 @@
                 </div>
 
                 <div class="mt-10">
-			            <?php
-				            if($errors) {
-					            foreach($errors as $error) {
-						            echo $error;
-					            }
-				            }
-			            ?>
+                    <?php
+                        if($errors) {
+                            echo '<ul>';
+                            foreach($errors as $error) {
+                                echo '<li>'.$error.'</li>';
+                            }
+                            echo '</ul>';
+                        }
+                    ?>
                 </div>
 
                 <div class="options mt-10">
@@ -65,8 +67,13 @@
         </div>
     </section>
 
-    <script src="../../js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="../../js/plugins.js"></script>
+    <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $('#email').focus();
+    </script>
 </body>
 
 </html>

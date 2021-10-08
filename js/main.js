@@ -4,6 +4,8 @@ const button = $('#create-comment > button');
 button.on('click', function() {
     $('#new-comment').show();
     $(this).hide();
+
+    $('#title').focus();
 });
 
 // Reiniciar formulario al presionar botón de cancelar

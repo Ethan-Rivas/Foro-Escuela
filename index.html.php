@@ -17,20 +17,20 @@
 </head>
 
 <body class="container">
-    <?php
-      require('components/navmenu.html.php');
-    ?>
+<?php
+    require('components/navmenu.html.php');
+?>
 
-    <section class="content p-15">
-        <table class="mt-20">
-            <?php
-                require('database/categories/index.php');
-            ?>
-        </table>
-    </section>
+<section class="content p-15">
+    <table class="mt-20">
+        <?php
+            require('database/categories/index.php');
+        ?>
+    </table>
+</section>
 
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="js/plugins.js"></script>
+<script src="js/vendor/modernizr-3.11.2.min.js"></script>
+<script src="js/plugins.js"></script>
 </body>
 
 </html>

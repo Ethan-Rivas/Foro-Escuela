@@ -18,32 +18,33 @@
 </head>
 
 <body class="container">
-<header class="header">
-    <a href="../../index.html.php" class="header__logo">UNISUR</a>
-
-    <nav class="menu">
-        <a href="#">Inicio</a>
-        <a href="../../pages/sessions/login.html.php">Iniciar Sesión</a>
-        <a href="../../pages/sessions/register.html.php">Registrarse</a>
-    </nav>
-</header>
+<?php
+    require('../../components/navmenu.html.php');
+    require('../../database/profile/profile.php');
+?>
 
 <section class="content p-15">
     <section id="post">
         <table class="mt-20">
             <tr>
-                <th colspan="2">Hoy 27/09/2021 - 11:33 AM</th>
+                <th colspan="2">Perfil</th>
             </tr>
             <tr class="no-border">
                 <td class="text-center vertical-align-top user-info">
-                    <img src="../../img/profile-pictures/1/f1456x819-1083485_1253855_5050.jpg"
-                         alt=""
-                         width="150px"
-                         height="150px;"
-                         class="mt-10">
+                    <div class="avatar-preview mt-10">
+                        <?php
+                            if ($user->image) {
+                                echo '<div id="profileImagePreview" style="background-image: url('.$user->image.');"></div>';
+                            } else {
+                                echo '<div id="profileImagePreview" style="background-image: url(https://ui-avatars.com/api/?name='.urlencode($user->nickname ? $user->nickname : $user->email).'&color=FFFFFF&background=a5d6a7);"></div>';
+                            }
+                        ?>
+                    </div>
 
                     <div class="mt-10">
-                        <a href="#">Ethan Rivas</a> <br>
+                        <?php
+                            echo '<a href="/pages/profile/profile.html.php?user_id=' .$user->id. '">'. ($user->nickname ? $user->nickname : $user->email). '</a> <br>'
+                        ?>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -51,24 +52,37 @@
                         <i class="fas fa-star"></i> <br>
 
                         <div class="mt-10">
-                            <a href="mailto:ethan-rivas@hotmail.com">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-facebook-square"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-twitter-square"></i>
-                            </a>
+                            <?php
+                                echo '<a href="mailto:' . $user->email . '">
+                                            <i class="fas fa-envelope"></i>
+                                          </a>';
+                                
+                                if ($user->facebook_url) {
+                                    echo '<a href="' . $user->facebook_url . '">
+                                            <i class="fab fa-facebook-square"></i>
+                                          </a>';
+                                }
+                                
+                                if ($user->twitter_url) {
+                                    echo '<a href="' . $user->twitter_url . '">
+                                            <i class="fab fa-twitter-square"></i>
+                                          </a>';
+                                }
+                            ?>
                         </div>
 
                         <div class="mt-10">
-                            <a href="../../pages/profile/edit.html.php">
-                                <button class="btn btn-success">Editar</button>
-                            </a>
-                            <a href="../../index.html.php" onclick="return confirm('Seguro que desea eliminar su cuenta?');">
-                                <button class="btn btn-success">Eliminar</button>
-                            </a>
+                            <?php
+                                if (isset($_SESSION['user']) && $user->email === $_SESSION['user']['email']) {
+                                    echo '<a href="/pages/profile/edit.html.php">
+                                          <button class="btn btn-success">Editar</button>
+                                      </a>
+                                      
+                                      <a href="/database/profile/delete.php?user_id='.$_SESSION['user']['id'].'" onclick="return confirm(\'Seguro que desea eliminar su cuenta? (No podrá recuperarla).\');">
+                                          <button class="btn btn-success">Eliminar</button>
+                                      </a>';
+                                }
+                            ?>
                         </div>
                     </div>
                 </td>
@@ -77,50 +91,36 @@
                         <table style="margin-top: 10px !important;">
                             <tr>
                                 <th colspan="2">Últimos hilos</th>
-                                <th class="text-center"><i class="fas fa-book"></i></th>
-                                <th class="text-center"><i class="fas fa-comment-dots"></i></th>
                                 <th class=""><i class="fas fa-clock"></i></th>
                             </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <i class="fas fa-comments forum-icon"></i>
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
-                                    <p>Esta es la primera hilo de ejemplo para el foro</p>
-                                </td>
-                                <td class="text-center">
-                                    100
-                                </td>
-                                <td class="text-center">
-                                    350
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
-                                    <p>Hoy 27/09/2021 - 11:33 AM</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <i class="fas fa-comments forum-icon"></i>
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
-                                    <p>Esta es la primera hilo de ejemplo para el foro</p>
-                                </td>
-                                <td class="text-center">
-                                    100
-                                </td>
-                                <td class="text-center">
-                                    350
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
-                                    <p>Hoy 27/09/2021 - 11:33 AM</p>
-                                </td>
-                            </tr>
+                            
+                            <?php
+                                if ($threads->num_rows > 0) {
+                                    // output data of each row
+                                    while ($thread = $threads->fetch_assoc()) {
+                                        $content = strlen($thread['content']) >= 100 ? htmlspecialchars(substr($thread['content'], 0, 150)) . '...' . '<a href="../threads/show.html.php?post_id=' . $thread["id"] . '">Ver más</a>' : $thread['content'];
+                                        
+                                        echo '<tr>
+                                                <td class="text-center comment-icon">
+                                                    <i class="fas fa-comments forum-icon"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="../threads/show.html.php?post_id=' . $thread["id"] . '">' . $thread["title"] . '</a>
+                                                    <p>' . $content . '</p>
+                                                </td>
+                                                <td class="comments-info">
+                                                    <p>'.$thread["created_at"].'</p>
+                                                </td>
+                                            </tr>';
+                                    }
+                                } else {
+                                    echo '<tr>
+                                              <td colspan="5" class="text-center">
+                                                  No hay hilos disponibles
+                                              </td>
+                                          </tr>';
+                                }
+                            ?>
                         </table>
                     </section>
 
@@ -128,50 +128,35 @@
                         <table style="margin-top: 0">
                             <tr>
                                 <th colspan="2">Últimos comentarios</th>
-                                <th class="text-center"><i class="fas fa-book"></i></th>
-                                <th class="text-center"><i class="fas fa-comment-dots"></i></th>
                                 <th class=""><i class="fas fa-clock"></i></th>
                             </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <i class="fas fa-comments forum-icon"></i>
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
-                                    <p>Esta es la primera hilo de ejemplo para el foro</p>
-                                </td>
-                                <td class="text-center">
-                                    100
-                                </td>
-                                <td class="text-center">
-                                    350
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
-                                    <p>Hoy 27/09/2021 - 11:33 AM</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                    <i class="fas fa-comments forum-icon"></i>
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Hilo de Ejemplo</a>
-                                    <p>Esta es la primera hilo de ejemplo para el foro</p>
-                                </td>
-                                <td class="text-center">
-                                    100
-                                </td>
-                                <td class="text-center">
-                                    350
-                                </td>
-                                <td>
-                                    <a href="../threads/show.html.php">Último comentario publicado</a> <br>
-                                    <span>Por: <a href="../../pages/profile/profile.html.php">Ethan Rivas</a></span>
-                                    <p>Hoy 27/09/2021 - 11:33 AM</p>
-                                </td>
-                            </tr>
+                            <?php
+                                if ($comments->num_rows > 0) {
+                                    // output data of each row
+                                    while ($comment = $comments->fetch_assoc()) {
+                                        $content = strlen($comment['content']) >= 100 ? htmlspecialchars(substr($comment['content'], 0, 150)) . '...' . '<a href="../threads/show.html.php?post_id=' . $comment["id"] . '">Ver más</a>' : $comment['content'];
+                
+                                        echo '<tr id=' . $comment["id"] .'>
+                                                <td class="text-center comment-icon">
+                                                    <i class="fas fa-comments forum-icon"></i>
+                                                </td>
+                                                <td>
+                                                    <a href="../threads/show.html.php?post_id=' . $comment["post_id"] .'">' . $comment["title"] . '</a>
+                                                    <p>' . $content . '</p>
+                                                </td>
+                                                <td class="comments-info">
+                                                    <p>'.$comment["created_at"].'</p>
+                                                </td>
+                                            </tr>';
+                                    }
+                                } else {
+                                    echo '<tr>
+                                              <td colspan="5" class="text-center">
+                                                  No hay comentarios disponibles
+                                              </td>
+                                          </tr>';
+                                }
+                            ?>
                         </table>
                     </section>
                 </td>
