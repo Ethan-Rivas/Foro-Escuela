@@ -12,7 +12,6 @@
             die("Connection failed: " . $conn->connect_error);
         }
         
-        
         // Recuperar Usuario
         $email = $_SESSION['user']['email'];
         $query = "SELECT * FROM users WHERE email='$email'";

@@ -11,14 +11,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/custom.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/custom.css">
 
     <script src="https://kit.fontawesome.com/48b6b080d5.js" crossorigin="anonymous"></script>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="container">
@@ -81,6 +81,11 @@
                                 echo '<textarea name="content" id="content" cols="30" rows="10" class="full-width">'.htmlspecialchars($post->content).'</textarea>';
                               ?>
                         </div>
+
+                        <!-- Mostrar errores -->
+                        <?php
+                            include('../../components/errors.php');
+                        ?>
     
                         <div class="mt-10">
                             <button id="edit-comment" type="submit" name="submit" class="btn btn-success">Editar</button>
@@ -103,9 +108,9 @@
         </table>
     </section>
     
-    <script src="../../js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="../../js/plugins.js"></script>
-    <script src="../../js/main.js"></script>
+    <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

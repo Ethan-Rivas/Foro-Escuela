@@ -38,28 +38,25 @@
         if ($threads->num_rows > 0) {
             // output data of each row
             while ($thread = $threads->fetch_assoc()) {
-                $content = strlen($thread['content']) >= 100 ? htmlspecialchars(
-                    substr($thread['content'], 0, 150)
-                  ) . '...' . '<a href="/pages/threads/show.html.php?post_id=' . $thread["id"] . '">Ver más</a>' : $thread['content'];
+                $thread = (object) $thread;
+                $content = strlen($thread->content) >= 100 ? htmlspecialchars(substr($thread->content, 0, 150)) . '...' . '<a href="/pages/threads/show.html.php?post_id=' . $thread->id . '">Ver más</a>' : $thread->content;
                 
                 echo '<tr>
                         <td class="text-center comment-icon">
                             <i class="fas fa-comments forum-icon"></i>
                         </td>
                         <td>
-                            <a href="/pages/threads/show.html.php?post_id=' . $thread["id"] . '">' . $thread["title"] .
-                  '</a>
+                            <a href="/pages/threads/show.html.php?post_id=' . $thread->id . '">' . $thread->title . '</a>
                             <p>' . $content . '</p>
                         </td>
                         <td class="text-center comment-icon">
-                            ' . $thread["comments"] . '
+                            ' . $thread->comments . '
                         </td>';
-                if ($thread["user_comment_title"]) {
+                if ($thread->user_comment_title) {
                     echo '<td class="comments-info">
-                                    <a href="/pages/threads/show.html.php?post_id=' . $thread["id"] . '">' . $thread["user_comment_title"] .
-                      '</a> <br>
-                                    <span>Por: <a href="/pages/profile/profile.html.php?user_id=' . $thread["user_id"] . '">' . ($thread["user"]) . '</a></span>
-                                    <p>' . ($thread["last_activity_datetime"]) . '</p>
+                                    <a href="/pages/threads/show.html.php?post_id=' . $thread->id . '">' . $thread->user_comment_title . '</a> <br>
+                                    <span>Por: <a href="/pages/profile/profile.html.php?user_id=' . $thread->user_id . '">' . ($thread->user) . '</a></span>
+                                    <p>' . ($thread->last_activity_datetime) . '</p>
                                   </td>';
                 } else {
                     echo '<td class="comments-info">

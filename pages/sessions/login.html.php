@@ -44,17 +44,10 @@
                     <label for="remember">Recuérdame</label>
                 </div>
 
-                <div class="mt-10">
-                    <?php
-                        if($errors) {
-                            echo '<ul>';
-                            foreach($errors as $error) {
-                                echo '<li>'.$error.'</li>';
-                            }
-                            echo '</ul>';
-                        }
-                    ?>
-                </div>
+                <!-- Mostrar errores -->
+                <?php
+                    include('../../components/errors.php');
+                ?>
 
                 <div class="options mt-10">
                     <div class="submit">

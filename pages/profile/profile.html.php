@@ -7,14 +7,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/custom.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/custom.css">
 
     <script src="https://kit.fontawesome.com/48b6b080d5.js" crossorigin="anonymous"></script>
-    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="container">
@@ -98,18 +98,19 @@
                                 if ($threads->num_rows > 0) {
                                     // output data of each row
                                     while ($thread = $threads->fetch_assoc()) {
-                                        $content = strlen($thread['content']) >= 100 ? htmlspecialchars(substr($thread['content'], 0, 150)) . '...' . '<a href="../threads/show.html.php?post_id=' . $thread["id"] . '">Ver más</a>' : $thread['content'];
+                                        $thread = (object) $thread;
+                                        $content = strlen($thread->content) >= 100 ? htmlspecialchars(substr($thread->content, 0, 150)) . '...' . '<a href="../threads/show.html.php?post_id=' . $thread->id . '">Ver más</a>' : $thread->content;
                                         
                                         echo '<tr>
                                                 <td class="text-center comment-icon">
                                                     <i class="fas fa-comments forum-icon"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="../threads/show.html.php?post_id=' . $thread["id"] . '">' . $thread["title"] . '</a>
+                                                    <a href="../threads/show.html.php?post_id=' . $thread->id . '">' . $thread->title . '</a>
                                                     <p>' . $content . '</p>
                                                 </td>
                                                 <td class="comments-info">
-                                                    <p>'.$thread["created_at"].'</p>
+                                                    <p>' . $thread->created_at . '</p>
                                                 </td>
                                             </tr>';
                                     }
@@ -134,18 +135,19 @@
                                 if ($comments->num_rows > 0) {
                                     // output data of each row
                                     while ($comment = $comments->fetch_assoc()) {
-                                        $content = strlen($comment['content']) >= 100 ? htmlspecialchars(substr($comment['content'], 0, 150)) . '...' . '<a href="../threads/show.html.php?post_id=' . $comment["id"] . '">Ver más</a>' : $comment['content'];
+                                        $comment = (object) $comment;
+                                        $content = strlen($comment->content) >= 100 ? htmlspecialchars(substr($comment->content,0,150)) .'...' . '<a href="../threads/show.html.php?post_id=' . $comment->id . '">Ver más</a>' : $comment->content;
                 
-                                        echo '<tr id=' . $comment["id"] .'>
+                                        echo '<tr id=' . $comment->id .'>
                                                 <td class="text-center comment-icon">
                                                     <i class="fas fa-comments forum-icon"></i>
                                                 </td>
                                                 <td>
-                                                    <a href="../threads/show.html.php?post_id=' . $comment["post_id"] .'">' . $comment["title"] . '</a>
+                                                    <a href="../threads/show.html.php?post_id=' . $comment->post_id .'">' . $comment->title . '</a>
                                                     <p>' . $content . '</p>
                                                 </td>
                                                 <td class="comments-info">
-                                                    <p>'.$comment["created_at"].'</p>
+                                                    <p>' . $comment->created_at . '</p>
                                                 </td>
                                             </tr>';
                                     }

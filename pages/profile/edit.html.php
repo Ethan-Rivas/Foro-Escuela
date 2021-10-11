@@ -115,17 +115,10 @@
                 <input id="password_confirmation" name="password_confirmation" type="password" class="full-width">
             </div>
 
-            <div class="mt-10">
-                <?php
-                    if($errors) {
-                        echo '<ul>';
-                        foreach($errors as $error) {
-                            echo '<li>'.$error.'</li>';
-                        }
-                        echo '</ul>';
-                    }
-                ?>
-            </div>
+            <<!-- Mostrar errores -->
+            <?php
+                include('../../components/errors.php');
+            ?>
     
             <div class="mt-20 text-center">
                 <?php
@@ -139,9 +132,9 @@
         </form>
     </section>
     
-    <script src="../../js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="../../js/plugins.js"></script>
-    <script src="../../js/main.js"></script>
+    <script src="/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

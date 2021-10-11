@@ -143,17 +143,10 @@
                                 <textarea name="content" id="content" cols="30" rows="10" class="full-width"></textarea>
                             </div>
 
-                            <div class="mt-10">
-                                <?php
-                                    if($errors) {
-                                        echo '<ul>';
-                                        foreach($errors as $error) {
-                                            echo '<li>'.$error.'</li>';
-                                        }
-                                        echo '</ul>';
-                                    }
-                                ?>
-                            </div>
+                            <!-- Mostrar errores -->
+                            <?php
+                                include('../../components/errors.php');
+                            ?>
     
                             <div class="mt-10">
                                 <button id="publish-comment" type="submit" name="submit" class="btn btn-success">Publicar</button>

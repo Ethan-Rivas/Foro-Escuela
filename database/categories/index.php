@@ -37,9 +37,11 @@
     if ($categories->num_rows > 0) {
         // output data of each row
         while ($category = $categories->fetch_assoc()) {
-            if ($category["category_id"] == null) {
+            $category = (object) $category;
+            
+            if ($category->category_id == null) {
                 echo '<tr>
-                <th colspan="2">' . $category["title"] . '</th>
+                <th colspan="2">' . $category->title . '</th>
                 <th class="text-center"><i class="fas fa-book"></i></th>
                 <th class=""><i class="fas fa-clock"></i></th>
             </tr>';
@@ -49,17 +51,16 @@
                     <i class="fas fa-comments forum-icon"></i>
                 </td>
                 <td>
-                    <a href="/pages/subcategories/index.html.php?category_id=' . $category["id"] . '">' . $category["title"] . '</a>
-                    <p>' . $category["description"] . '</p>
+                    <a href="/pages/subcategories/index.html.php?category_id=' . $category->id . '">' . $category->title . '</a><p>' . $category->description . '</p>
                 </td>
                 <td class="text-center comment-icon">
-                    ' . $category["threads"] . '
+                    ' . $category->threads . '
                 </td>';
-                if ($category["last_activity"]) {
+                if ($category->last_activity) {
                     echo '<td class="comments-info">
-                               <a href="/pages/threads/show.html.php?post_id=' . $category["last_activity_id"] . '">' . $category["last_activity"] . '</a> <br>
-                               <span>Por: <a href="/pages/profile/profile.html.php?user_id=' . $category["user_id"] . '">' . $category["user"] . '</a></span>
-                               <p>' . $category["last_thread_datetime"] . '</p>
+                               <a href="/pages/threads/show.html.php?post_id=' . $category->last_activity_id . '">' . $category->last_activity . '</a> <br>
+                               <span>Por: <a href="/pages/profile/profile.html.php?user_id=' . $category->user_id . '">' . $category->user . '</a></span>
+                               <p>' . $category->last_thread_datetime . '</p>
                             </td>';
                 } else {
                     echo '<td class="comments-info">

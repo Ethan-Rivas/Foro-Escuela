@@ -45,29 +45,29 @@
         
         // Área de Edición
         if (isset($_POST['submit']) && $_GET['post_id']) {
-            session_start();
-            
             $title = mysqli_real_escape_string($conn, $_POST['title']);
             $content = mysqli_real_escape_string($conn, $_POST['content']);
             
             if (empty($title)) {
-                array_push($errors, "Se necesita un título para crear un hilo");
+                array_push($errors, "Se necesita un título para editar un hilo");
             }
             if (empty($content)) {
-                array_push($errors, "Se necesita el contenido para crear un hilo");
+                array_push($errors, "Se necesita el contenido para editar un hilo");
             }
-            
-            $post_id = $_GET["post_id"];
-            $date = date('Y-m-d h:i:s');
-            
-            $query = "UPDATE posts SET title='$title', content='$content', updated_at='$date' WHERE id = '$post_id'";
-            $results = mysqli_query($conn, $query);
-            $conn->close();
-            
-            if ($post->post_id) {
-                header("location: /pages/threads/show.html.php?post_id=$post->post_id");
-            } else {
-                header("location: /pages/threads/show.html.php?post_id=$post_id");
+    
+            if (count($errors) == 0) {
+                $post_id = $_GET["post_id"];
+                $date = date('Y-m-d h:i:s');
+    
+                $query = "UPDATE posts SET title='$title', content='$content', updated_at='$date' WHERE id = '$post_id'";
+                $results = mysqli_query($conn, $query);
+                $conn->close();
+    
+                if ($post->post_id) {
+                    header("location: /pages/threads/show.html.php?post_id=$post->post_id");
+                } else {
+                    header("location: /pages/threads/show.html.php?post_id=$post_id");
+                }
             }
         }
     } else {
