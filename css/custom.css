@@ -165,7 +165,7 @@ table {
     width: 100%;
 }
 
-td.comment-icon {
+th,td.comment-icon {
     width: 100px;
 }
 
@@ -351,4 +351,8 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.clock-icon {
+    width: 250px;
 }

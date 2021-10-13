@@ -31,11 +31,11 @@
         $results = mysqli_query($conn, $query);
         
         if (mysqli_num_rows($results) == 1) {
-            $post = (object)$results->fetch_assoc();
+            $post = (object) $results->fetch_assoc();
             $conn->close();
             
-            if ($post->post_id) {
-                header("location: /404.html");
+            if (!$post->id || $post->post_id) {
+                header("location: /");
             }
         } else {
             $conn->close();
@@ -43,5 +43,5 @@
         }
     } else {
         $conn->close();
-        header("location: /404.html");
+        header("location: /");
     }

@@ -78,7 +78,7 @@
                                           <button class="btn btn-success">Editar</button>
                                       </a>
                                       
-                                      <a href="/database/profile/delete.php?user_id='.$_SESSION['user']['id'].'" onclick="return confirm(\'Seguro que desea eliminar su cuenta? (No podrá recuperarla).\');">
+                                      <a href="/database/profile/delete.php?user_id='.$_SESSION['user']['id'].'" onclick="return confirm(\'Seguro que desea eliminar su cuenta? (No podrá recuperarla) \nTodos los posts y comentarios serán eliminados.\');">
                                           <button class="btn btn-success">Eliminar</button>
                                       </a>';
                                 }
@@ -91,7 +91,7 @@
                         <table style="margin-top: 10px !important;">
                             <tr>
                                 <th colspan="2">Últimos hilos</th>
-                                <th class=""><i class="fas fa-clock"></i></th>
+                                <th class="clock-icon"><i class="fas fa-clock"></i></th>
                             </tr>
                             
                             <?php
@@ -129,14 +129,14 @@
                         <table style="margin-top: 0">
                             <tr>
                                 <th colspan="2">Últimos comentarios</th>
-                                <th class=""><i class="fas fa-clock"></i></th>
+                                <th class="clock-icon"><i class="fas fa-clock"></i></th>
                             </tr>
                             <?php
                                 if ($comments->num_rows > 0) {
                                     // output data of each row
                                     while ($comment = $comments->fetch_assoc()) {
                                         $comment = (object) $comment;
-                                        $content = strlen($comment->content) >= 100 ? htmlspecialchars(substr($comment->content,0,150)) .'...' . '<a href="../threads/show.html.php?post_id=' . $comment->id . '">Ver más</a>' : $comment->content;
+                                        $content = strlen($comment->content) >= 100 ? htmlspecialchars(substr($comment->content,0,150)) .'...' . '<a href="../threads/show.html.php?post_id=' . $comment->post_id . '">Ver más</a>' : $comment->content;
                 
                                         echo '<tr id=' . $comment->id .'>
                                                 <td class="text-center comment-icon">

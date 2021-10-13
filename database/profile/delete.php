@@ -1,5 +1,9 @@
 <?php
     
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+    
     if (isset($_SESSION["user"])) {
         $base_path = substr(__DIR__, 0, strpos(__DIR__, 'database')) . '/database';
         require("{$base_path}/connection_info.php");
@@ -18,6 +22,7 @@
         if (isset($_GET["user_id"]) && $_SESSION["user"]["id"] === $_GET["user_id"]) {
             $query = "DELETE FROM users WHERE id=" . $_GET["user_id"];
             $results = mysqli_query($conn, $query);
+            $conn->close();
             
             require_once('../../database/sessions/logout.php');
         } else {

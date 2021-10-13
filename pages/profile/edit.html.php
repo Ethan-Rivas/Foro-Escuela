@@ -115,7 +115,7 @@
                 <input id="password_confirmation" name="password_confirmation" type="password" class="full-width">
             </div>
 
-            <<!-- Mostrar errores -->
+            <!-- Mostrar errores -->
             <?php
                 include('../../components/errors.php');
             ?>

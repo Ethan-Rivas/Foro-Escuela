@@ -16,17 +16,22 @@
         $query = "SELECT * FROM users WHERE id=" . $_GET['user_id'];
         $results = mysqli_query($conn, $query);
         $user = (object)$results->fetch_assoc();
-        
-        // Recuperar Hilos del Usuario
-        $table = "posts";
-        $columns = "*";
-        
-        $sql = "SELECT " . $columns . " FROM " . $table . " WHERE post_id IS NULL AND user_id=" . $user->id . ' LIMIT 3;';
-        $threads = $conn->query($sql);
-        $sql = "SELECT " . $columns . " FROM " . $table . " WHERE post_id IS NOT NULL AND user_id=" . $user->id . ' LIMIT 3;';
-        $comments = $conn->query($sql);
-        
-        $conn->close();
+    
+        if (mysqli_num_rows($results) == 1) {
+            // Recuperar Hilos del Usuario
+            $table = "posts";
+            $columns = "*";
+    
+            $sql = "SELECT " . $columns . " FROM " . $table . " WHERE post_id IS NULL AND user_id=" . $user->id . ' LIMIT 3;';
+            $threads = $conn->query($sql);
+            $sql = "SELECT " . $columns . " FROM " . $table . " WHERE post_id IS NOT NULL AND user_id=" . $user->id . ' LIMIT 3;';
+            $comments = $conn->query($sql);
+    
+            $conn->close();
+        } else {
+            $conn->close();
+            header("location: /404.html");
+        }
     } else {
         $conn->close();
         header("location: /404.html");

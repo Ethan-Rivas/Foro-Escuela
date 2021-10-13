@@ -38,7 +38,7 @@
             $results = mysqli_query($conn, $query);
             $post = (object)$results->fetch_assoc();
             
-            if (!$post->id) {
+            if (!$post->id || $post->user_id != $_SESSION['user']['id']) {
                 header("location: /404.html");
             }
         }

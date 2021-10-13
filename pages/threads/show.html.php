@@ -34,7 +34,7 @@
                                 <button class="btn btn-success">Editar Hilo</button>
                           </a>
                           
-                          <a href="/pages/subcategories/index.html.php" onclick="return confirm("Seguro que desea eliminar este hilo?");">
+                          <a href="/database/threads/delete.php?post_id=' . $post->id . '" onclick="return confirm(\'Seguro que desea eliminar este hilo?\');">
                                 <button class="btn btn-success">Eliminar Hilo</button>
                           </a>';
                 }
@@ -152,7 +152,7 @@
                                 <button id="publish-comment" type="submit" name="submit" class="btn btn-success">Publicar</button>
                                 <button id="cancel-comment" type="reset" class="btn btn-success">Cancelar</button>
     
-                                <span class="float-right">Hoy 27/09/2021 - 11:33 AM</span>
+                                <span class="float-right"><?php echo date("Y-m-d H:i");?></span>
                             </div>
                         </form>
                     </td>

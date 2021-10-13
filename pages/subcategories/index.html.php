@@ -35,8 +35,8 @@
         <table style="margin-top: 15px !important;">
             <tr>
                 <th colspan="2">Hilos</th>
-                <th class="text-center"><i class="fas fa-comment-dots"></i></th>
-                <th class=""><i class="fas fa-clock"></i></th>
+                <th class="text-center comments-icon"><i class="fas fa-comment-dots"></i></th>
+                <th class="clock-icon"><i class="fas fa-clock"></i></th>
             </tr>
     
             <?php
